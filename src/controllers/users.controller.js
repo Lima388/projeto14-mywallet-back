@@ -26,7 +26,12 @@ export async function signIn(req, res) {
       userId: userExists._id,
     });
 
-    res.send({ token });
+    const responseObj = {
+      token: token,
+      user: userExists.name,
+    };
+
+    res.send(responseObj);
   } catch (err) {
     console.log(err);
     res.sendStatus(500);
