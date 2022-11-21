@@ -53,6 +53,7 @@ export async function findEntry(req, res) {
 
     const entries = await entriesCollection
       .find({ user: session.userId })
+      .sort({ _id: -1 })
       .toArray();
     res.send(entries);
   } catch (err) {
